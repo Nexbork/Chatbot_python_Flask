@@ -1,0 +1,144 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #chat-form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        #user-message {
+            width: 60%;
+            padding: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 8px 15px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #response-container {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        #new-response {
+            width: 60%;
+            padding: 8px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chatbot</h1>
+    <form id="chat-form">
+        <label for="user-message">Mensaje:</label>
+        <input type="text" id="user-message" name="user_message" required>
+        <button type="submit">Enviar</button>
+    </form>
+    <div id="response-container"></div>
+
+    <script>
+        document.getElementById("chat-form").addEventListener("submit", function (event) {
+            event.preventDefault();
+            var userMessage = document.getElementById("user-message").value;
+
+            // Enviar la pregunta al servidor
+            fetch("/get_response", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: new URLSearchParams({ user_message: userMessage }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Mostrar la respuesta del servidor
+                document.getElementById("response-container").innerHTML = data.response;
+
+                // Si la respuesta contiene la frase de aprendizaje, mostrar el formulario de aprendizaje
+                if (data.response.includes("¿Te gustaría enseñarme más sobre la pregunta")) {
+                    showLearnForm(data.question);
+                }
+            });
+        });
+
+        function showLearnForm(question) {
+            var learnForm = document.createElement("form");
+            learnForm.innerHTML = `
+                <label for="new-response">Nueva respuesta:</label>
+                <input type="text" id="new-response" name="new_response" required>
+                <input type="hidden" id="learn-question" name="user_message" value="${question}">
+                <label for="learn">¿Quieres enseñarme esto?</label>
+                <select id="learn" name="learn">
+                    <option value="yes">Sí</option>
+                    <option value="no">No</option>
+                </select>
+                <button type="submit">Aprender</button>
+            `;
+
+            learnForm.addEventListener("submit", function (event) {
+                event.preventDefault();
+                var newResponse = document.getElementById("new-response").value;
+
+                // Enviar la nueva respuesta y decisión de aprendizaje al servidor
+                fetch("/learn", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                    },
+                    body: new URLSearchParams({
+                        user_message: question,
+                        new_response: newResponse,
+                        learn: document.getElementById("learn").value,
+                    }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Mostrar la respuesta del servidor después de aprender
+                    document.getElementById("response-container").innerHTML = data.message;
+                });
+            });
+
+            document.getElementById("response-container").appendChild(learnForm);
+        }
+    </script>
+</body>
+</html>
