@@ -24,6 +24,10 @@ def guardar_conversaciones():
 def home():
     return render_template("index.html")
 
+@app.route("/guide")
+def guide_page():
+    return render_template("guide.html")
+
 @app.route("/get_response", methods=["POST"])
 def get_response():
     user_message = request.form["user_message"]
