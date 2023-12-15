@@ -7,65 +7,128 @@
     <style>
       body {
         font-family: "Arial", sans-serif;
-        background-color: #f8f8f8;
         margin: 0;
-        padding: 20px;
+        padding: 0;
+        background-color: #f8f8f8;
         text-align: center;
         color: #333;
       }
 
+      body {
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        text-align: center;
+      }
+
+      nav {
+        background-color: #333;
+        color: white;
+        padding: 10px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 4rem;
+      }
+
+      nav h1 {
+        margin: 0;
+        font-size: 1.5em;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+      }
+
+      ul a {
+        text-decoration: none;
+        color: white;
+        margin-right: 20px;
+      }
+
+      .title {
+        color: white;
+      }
+
       h1 {
-        color: #0066cc;
+        color: #333;
+        margin-top: 20px;
       }
 
       #instructions {
-        margin-top: 20px;
-        padding: 20px;
-        border: 1px solid #ddd;
         background-color: #fff;
-        border-radius: 5px;
+        border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        text-align: left;
+        padding: 20px;
+        margin: 20px auto;
+        max-width: 600px;
       }
 
-      p {
-        margin-bottom: 15px;
+      ol {
+        list-style-type: decimal;
+        margin: 0;
+        padding: 0;
       }
 
-      label {
-        display: block;
-        margin-top: 15px;
-        color: #555;
-      }
-
-      input {
-        width: 60%;
-        padding: 8px;
-        font-size: 16px;
-      }
-
-      button {
-        margin-top: 15px;
-        padding: 8px 15px;
-        background-color: #4caf50;
-        color: white;
-        border: none;
-        cursor: pointer;
-      }
-
-      button:hover {
-        background-color: #45a049;
+      li {
+        margin: 15px 0;
       }
 
       .images {
         display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        margin: 2rem 0 2rem 0;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin: 20px 0;
+      }
+
+      .images div {
+        width: 30%;
+        margin-bottom: 20px;
+      }
+
+      .images p {
+        font-weight: bold;
+      }
+
+      .images img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-top: 10px;
+      }
+
+      a {
+        display: block;
+        color: #333;
+        margin-top: 20px;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      a:hover {
+        color: #0066cc;
       }
     </style>
   </head>
   <body>
+    <nav>
+      <h1 class="title">Grupo 5</h1>
+      <ul>
+        <a href="/">
+          <li>Chatbot</li>
+        </a>
+        <a href="/images_processing">
+          <li>Procesamiento de imagenes</li>
+        </a>
+        <a href="/guide">
+          <li>Guia</li>
+        </a>
+      </ul>
+    </nav>
     <h1>Instructivo para el Chatbot</h1>
     <div id="instructions">
       <p>¡Bienvenido al Chatbot! Aquí te explicamos cómo usarlo:</p>
@@ -80,7 +143,7 @@
 
         <li>
           <p><strong>Si hay respuesta:</strong></p>
-          <p>Si el Chatbot respondera a tu pregunta.</p>
+          <p>Si el Chatbot responderá a tu pregunta.</p>
         </li>
         <li>
           <p><strong>Si no hay respuesta:</strong></p>
@@ -98,22 +161,22 @@
     </div>
     <h1>Ejemplos de uso</h1>
     <div class="images">
-      <div class="">
+      <div>
         <p><strong>Haciendo la pregunta al chatbot</strong></p>
-        <img src="../static//images/1.jpeg"" alt="1" />
+        <img src="../static//images/1.jpeg" alt="1" />
       </div>
-      <div class="">
+      <div>
         <p><strong>Respuesta del chatbot</strong></p>
-        <img src="../static//images/2.jpeg"" alt="2" />
+        <img src="../static//images/2.jpeg" alt="2" />
       </div>
-      <div class="">
+      <div>
         <p>
           <strong
-            >En caso no haya una respuesta disponible, el chatbot solicitara una
+            >En caso no haya una respuesta disponible, el chatbot solicitará una
             respuesta de aprendizaje</strong
           >
         </p>
-        <img src="../static//images/3.jpeg"" alt="3" />
+        <img src="../static//images/3.jpeg" alt="3" />
       </div>
     </div>
     <a href="/">Volver</a>

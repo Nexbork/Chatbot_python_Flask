@@ -1,6 +1,10 @@
 from flask import Flask, render_template, request, jsonify
 from difflib import get_close_matches
 import json
+import src.colors as colors
+import src.groups as groups
+import src.columns as columns
+
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
@@ -58,6 +62,16 @@ def learn():
 @app.route("/get_conversations", methods=["GET"])
 def get_conversations():
     return jsonify(conversaciones)
+
+@app.route("/images_processing", methods=["GET"])
+def images_processing():
+    resultado_color = colors.contar_fichas_por_color()
+    resultado_group = groups.contar_fichas_por_grupo()
+    resultado_columns = columns.contar_fichas_por_fila()
+    
+    # resultados = [resultado_color, resultado_group, resultado_columns]
+
+    return render_template('images.html', resultado_color=resultado_color, resultado_group=resultado_group, resultado_columns=resultado_columns)
 
 if __name__ == "__main__":
     app.run(debug=True)

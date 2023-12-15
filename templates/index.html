@@ -7,66 +7,160 @@
     <title>Chatbot</title>
     <style>
       body {
-        font-family: Arial, sans-serif;
-        background-color: #f0f0f0;
+        font-family: "Arial", sans-serif;
         margin: 0;
-        padding: 20px;
+        padding: 0;
+        background-color: #f8f8f8;
         text-align: center;
+        color: #333;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        text-align: center;
+      }
+
+      nav {
+        background-color: #333;
+        color: white;
+        padding: 10px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 4rem;
+      }
+
+      nav h1 {
+        margin: 0;
+        font-size: 1.5em;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+      }
+
+      ul a {
+        text-decoration: none;
+        color: white;
+        margin-right: 20px;
+      }
+
+      .title {
+        color: white;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      button {
+        background-color: yellowgreen;
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      button:hover {
+        background-color: #005bb5;
       }
 
       h1 {
         color: #333;
+        margin-top: 20px;
       }
 
       #chat-form {
-        margin-top: 20px;
-      }
-
-      label {
-        display: block;
-        margin-bottom: 10px;
-        color: #555;
-      }
-
-      #user-message {
-        width: 60%;
-        padding: 8px;
-        font-size: 16px;
-      }
-
-      button {
-        padding: 8px 15px;
-        background-color: #4caf50;
-        color: white;
-        border: none;
-        cursor: pointer;
-      }
-
-      button:hover {
-        background-color: #45a049;
-      }
-
-      #response-container {
-        margin-top: 20px;
-        padding: 20px;
-        border: 1px solid #ddd;
+        max-width: 400px;
+        margin: 20px auto;
         background-color: #fff;
-        border-radius: 5px;
+        border-radius: 8px;
+        padding: 20px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       }
 
-      form {
-        margin-top: 20px;
+      #chat-form label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
       }
 
-      #new-response {
-        width: 60%;
-        padding: 8px;
+      #chat-form input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      #chat-form button {
+        background-color: #009688;
+        color: #fff;
+        padding: 10px 20px;
         font-size: 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      #chat-form button:hover {
+        background-color: #00796b;
+      }
+
+      #response-container {
+        margin: 20px auto;
+        max-width: 600px;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      #guide-link {
+        display: block;
+        color: #333;
+        margin-top: 20px;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      #guide-link:hover {
+        color: #0066cc;
       }
     </style>
   </head>
   <body>
+    <nav>
+      <h1 class="title">Grupo 5</h1>
+      <ul>
+        <a href="/">
+          <li>Chatbot</li>
+        </a>
+        <a href="/images_processing">
+          <li>Procesamiento de imagenes</li>
+        </a>
+        <a href="/guide">
+          <li>Guia</li>
+        </a>
+      </ul>
+    </nav>
+
+    <a href="/images_processing">
+      <h2>Nueva funcionalidad</h2>
+      <button>Procesamiento de imagenes</button>
+    </a>
+    <hr />
     <h1>Chatbot</h1>
     <form id="chat-form">
       <label for="user-message">Mensaje:</label>
@@ -74,7 +168,7 @@
       <button type="submit">Enviar</button>
     </form>
     <div id="response-container"></div>
-
+    <a id="guide-link" href="/guide">¿Necesitas ayuda?</a>
     <script>
       document
         .getElementById("chat-form")
@@ -148,7 +242,5 @@
         document.getElementById("response-container").appendChild(learnForm);
       }
     </script>
-
-    <a href="/guide">Necesitas ayuda?</a>
   </body>
 </html>

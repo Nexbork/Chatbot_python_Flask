@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contador de Fichas</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        text-align: center;
+      }
+
+      nav {
+        background-color: #333;
+        color: white;
+        padding: 10px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 4rem;
+      }
+
+      nav h1 {
+        margin: 0;
+        font-size: 1.5em;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+      }
+
+      ul a {
+        text-decoration: none;
+        color: white;
+        margin-right: 20px;
+      }
+
+      .title {
+        color: white;
+      }
+
+      h1 {
+        color: #333;
+      }
+
+      .row {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin: 20px 0;
+      }
+
+      .card {
+        width: 30%;
+        margin-bottom: 20px;
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .card img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 4px;
+        margin-bottom: 10px;
+      }
+
+      p {
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <h1 class="title">Grupo 5</h1>
+      <ul>
+        <a href="/">
+          <li>Chatbot</li>
+        </a>
+        <a href="/images_processing">
+          <li>Procesamiento de imagenes</li>
+        </a>
+        <a href="/guide">
+          <li>Guia</li>
+        </a>
+      </ul>
+    </nav>
+    <h1>Contador de Fichas</h1>
+    <div class="row">
+      <div class="card">
+        <img src="{{resultado_color['ruta_img']}}" alt="Imagen Resultante" />
+        <p>
+          Total de fichas blancas: {{ resultado_color['total_fichas_blancas'] }}
+        </p>
+        <p>
+          Total de fichas negras: {{ resultado_color['total_fichas_negras'] }}
+        </p>
+      </div>
+      <div class="card">
+        <img src="{{resultado_group['ruta_img']}}" alt="Imagen Resultante" />
+        <p>
+          Total de fichas arriba: {{ resultado_group['total_fichas_arriba'] }}
+        </p>
+        <p>
+          Total de fichas abajo: {{ resultado_group['total_fichas_abajo'] }}
+        </p>
+      </div>
+      <div class="card">
+        <img src="{{resultado_columns['ruta_img']}}" alt="Imagen Resultante" />
+        <p>
+          Total de filas detectadas: {{ resultado_columns['filas_detectadas'] }}
+        </p>
+      </div>
+    </div>
+    <!-- {% if img_data %} -->
+    <!-- {% endif %} -->
+  </body>
+</html>
